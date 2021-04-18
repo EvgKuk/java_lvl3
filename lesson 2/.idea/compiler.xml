@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="my.webinar_chat.maven" />
+        <module name="lesson 2" />
       </profile>
     </annotationProcessing>
   </component>

@@ -4,7 +4,6 @@ public class SQLAuthService implements AuthService {
 
     @Override
     public void start() {
-
     }
 
     @Override

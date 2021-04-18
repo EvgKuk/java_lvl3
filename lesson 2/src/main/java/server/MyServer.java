@@ -1,6 +1,9 @@
 package server;
 
-import server.auth.*;
+import server.auth.AuthService;
+import server.auth.ClientHandler;
+import server.auth.SQLAuthService;
+import server.auth.SQLHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -8,7 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-import static server.auth.SQLHandler.*;
+import static server.auth.SQLHandler.connect;
 
 /**
  * MyServer хранит список подключенных клиентов, предназначенный для управления соединением с клиентом и рассылкой
@@ -28,12 +31,13 @@ public class MyServer {
 
     public MyServer() throws RuntimeException {
         clients = new ArrayList<>();
-        authService = new SQLAuthService();
-        authService.start();
+
         if (!SQLHandler.connect()) {
             throw new RuntimeException("База данных не подключена");
         }
 
+        authService = new SQLAuthService();
+        authService.start();
         try (ServerSocket server = new ServerSocket(PORT)) {
             /*
              * Ниже закомментирован исходный код работы чата без баз данных.

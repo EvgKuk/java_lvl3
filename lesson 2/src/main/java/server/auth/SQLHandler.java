@@ -21,9 +21,9 @@ public class SQLHandler {
     }
 
     private static void prepareAllStmt() throws SQLException {
-        prStmtGetNick = connection.prepareStatement("SELECT nickname FROM users WHERE login = ? AND password = ?;");
-        prStmtRegistration = connection.prepareStatement("INSERT INTO users (login, password, nickname) VALUES (? ,? ,? );");
-        prStmtChangeNick = connection.prepareStatement("UPDATE users SET nickname = ? WHERE nickname = ?;");
+        prStmtGetNick = connection.prepareStatement("SELECT nick FROM users WHERE login = ? AND pass = ?;");
+        prStmtRegistration = connection.prepareStatement("INSERT INTO users (login, pass, nick) VALUES (? ,? ,? );");
+        prStmtChangeNick = connection.prepareStatement("UPDATE users SET nick = ? WHERE nick = ?;");
     }
 
 
